@@ -1,6 +1,11 @@
-# Mohamed Ayman — Portfolio
+# Mostafa Mohamed — Portfolio
 
-React + Vite project. Current build phase: **Intro loader → Navbar → Hero**.
+Personal portfolio site for **Mostafa Mohamed Mahmoud** — final-year Computer
+Science student at Mansoura University, full-stack developer working with
+**React** on the frontend and **Django** or **.NET** on the backend.
+
+React + Vite project, fully built: Intro loader → Navbar → Hero → About →
+Skills → Works → Experience → Contact, plus a dedicated detail page per project.
 
 ## Run it
 
@@ -11,48 +16,54 @@ npm run dev
 
 Then open the local URL Vite prints (usually http://localhost:5173).
 
-Uses [Framer Motion](https://www.framer.com/motion/) (`useScroll` + `useTransform`) to
-drive the Home → About photo transition directly off scroll position — see
-"The Home → About scene" below.
+## Before you deploy
+
+- [ ] Confirm `public/Profile.png` is your real photo (replace it if not —
+      keep the same filename, or update `PROFILE_IMAGE` in
+      `src/data/skills.js` if you rename it)
+- [ ] Add your real CV to `public/Mostafa-Mohamed-CV.pdf` (referenced by
+      `CV_URL` in `src/data/skills.js` — currently no file there yet)
+- [ ] Add real screenshots for GymX, Eflyer, QR Forge, and Arven in
+      `public/works/<project>/` — Sarab, CineMatch and SentinelX already
+      have real screenshots wired in `src/data/works.js`
 
 ## Project structure
 
 ```
 portfolio/
-├── index.html                 # HTML shell, loads Google Fonts (Sora / Inter / Dancing Script)
+├── index.html                 # HTML shell — meta tags, favicon, Google Fonts
 ├── vite.config.js
 ├── package.json
-├── public/                    # put profile.jpg, CV.pdf, favicon, etc. here
+├── vercel.json / public/_redirects   # SPA rewrite rules for static hosting
+├── public/
+│   ├── Profile.png            # profile photo (replace with your own)
+│   ├── favicon.svg            # branded "MM" favicon
+│   └── works/                 # project screenshots, one folder per project
 └── src/
-    ├── main.jsx                # React entry point
-    ├── App.jsx                 # top-level layout: intro + navbar + scene + sections
+    ├── main.jsx                # React entry point (BrowserRouter)
+    ├── App.jsx                 # top-level layout: cursor + routes
+    ├── Portfolio.jsx            # the single-page layout (all sections)
     ├── data/
-    │   └── skills.js            # single source of truth for the tech-stack list
+    │   ├── skills.js            # name, contact links, skills, profile/CV paths
+    │   └── works.js              # all 7 projects — summary, highlights, stack, links
     ├── components/
-    │   ├── IntroLoader.jsx      # the loading-screen animation sequence
+    │   ├── IntroLoader.jsx        # the loading-screen animation sequence
     │   ├── Navbar.jsx
-    │   ├── HeroAbout.jsx        # Home + About as one continuous Framer Motion scroll scene
-    │   ├── Reveal.jsx           # shared fade-in-from-above wrapper for the lower sections
-    │   ├── SkillMark.jsx        # renders a real brand logo or a fallback icon
-    │   └── Placeholder.jsx      # stub for Skills/Works/Experience/Contact
+    │   ├── Hero.jsx
+    │   ├── About.jsx
+    │   ├── Skills.jsx / GroupStop.jsx   # scroll-driven skills section
+    │   ├── SkillMark.jsx          # renders a real brand logo, with a safe fallback
+    │   ├── Works.jsx               # project carousel on the home page
+    │   ├── Experience.jsx
+    │   ├── Contact.jsx
+    │   ├── SocialRail.jsx
+    │   ├── Reveal.jsx               # shared fade-in-from-above wrapper
+    │   └── Cursor.jsx
+    ├── pages/
+    │   └── ProjectDetail.jsx        # /works/:id — full case study per project
     └── styles/
-        └── index.css            # all styling, organized by section
+        └── index.css                 # all styling, organized by section
 ```
-
-## The Home → About scene
-
-`HeroAbout.jsx` is not two separate sections — it's one tall scroll region
-(`.scene-wrap`) with a `position: sticky` viewport inside it. Framer Motion's
-`useScroll` tracks scroll progress across that region (0 → 1), and
-`useTransform` maps that progress straight onto the photo's position, scale,
-rotation and blur:
-
-- top-right (Home) → bottom-left (About), continuously, in lockstep with your scroll
-- scroll back up and the motion reverses exactly — there's no "play once" animation
-- Hero text fades out over the first ~35% of the scroll, About text fades in
-  over the last ~45%, both scroll-linked the same way
-- `prefers-reduced-motion` disables the movement entirely (position/scale/blur
-  all collapse to static values) while keeping the opacity crossfade
 
 ## Intro loader sequence
 
@@ -71,27 +82,32 @@ and has a "Skip" button.
 
 ## Real skill icons
 
-Brand icons (PHP, Laravel, MySQL, JavaScript, Bootstrap, HTML5, CSS3, Flutter, Dart,
-Git, GitHub, Postman, Linux, Apache, JWT, Composer) load live from the
-[Simple Icons CDN](https://simpleicons.org) with their official colors —
-`https://cdn.simpleicons.org/<slug>/<hexColor>`. That means:
+Brand icons (Django, .NET, React, TypeScript, JavaScript, HTML5, CSS3,
+PostgreSQL, MySQL, Docker, Git, GitHub, Linux, Red Hat, and more) load live
+from the [Simple Icons CDN](https://simpleicons.org) with their official
+colors — `https://cdn.simpleicons.org/<slug>/<hexColor>`. That means:
 
 - They're the real, current, official logos — nothing hand-approximated.
-- They need internet access in the visitor's browser to load (not a build step).
-- If a logo doesn't load in your environment, tell me and I'll swap in a local SVG.
+- They need internet access in the visitor's browser to load.
+- If any single icon ever fails to load (blocked domain, bad slug), it falls
+  back automatically to a colored initial badge — see `SkillMark.jsx` — so
+  nothing ever shows as a broken image.
 
-Concept skills that have no real logo (REST APIs, PDO, Database Design, Query
-Optimization, Transactions) use a deliberate `lucide-react` icon instead — see
-`src/data/skills.js` to change any of this.
+Concept skills that have no real logo (REST APIs, OWASP Top 10, JWT, RBAC)
+use a deliberate `lucide-react` icon instead — see `src/data/skills.js` to
+change any of this.
 
-## To customize
+## Color theme
 
-- Replace `PROFILE_IMAGE` and `CV_URL` in `src/data/skills.js` with your real photo
-  and CV file (drop the files in `public/` and reference them as `/profile.jpg`, etc.).
-- Colors, spacing and every animation live in `src/styles/index.css`.
+The accent color is a dark burgundy gradient (`--accent-gradient` in
+`src/styles/index.css`), used on the primary button and the ambient
+background glow. Both dark and light mode are tuned to the same warm,
+burgundy-leaning palette — light mode uses a warm cream background rather
+than pure white.
 
-## Not built yet
+## Deploying
 
-About / Skills / Works / Experience / Contact are placeholder sections right now
-(just so the navbar has somewhere to scroll to) — next build phase.
-"# Portfolio" 
+`public/_redirects` (Netlify) and `vercel.json` (Vercel) are already
+included so that direct links to a project page (e.g. `/works/sarab`) work
+correctly on those platforms without extra configuration. For other static
+hosts, make sure unknown paths fall back to `index.html`.
