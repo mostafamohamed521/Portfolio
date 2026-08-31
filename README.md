@@ -99,11 +99,10 @@ change any of this.
 
 ## Color theme
 
-The accent color is a dark burgundy gradient (`--accent-gradient` in
+The accent color is a warm amber gradient (`--accent-gradient` in
 `src/styles/index.css`), used on the primary button and the ambient
-background glow. Both dark and light mode are tuned to the same warm,
-burgundy-leaning palette — light mode uses a warm cream background rather
-than pure white.
+background glow. Both dark and light mode use the same amber accent — light
+mode uses a warm cream background rather than pure white.
 
 ## Deploying
 
