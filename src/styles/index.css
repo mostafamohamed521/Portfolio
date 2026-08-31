@@ -2,19 +2,20 @@
    Design tokens
    ========================================================================== */
 :root {
-  --bg: #0a0a0c;
-  --bg-soft: #111114;
-  --surface: rgba(255, 255, 255, 0.05);
-  --surface-strong: rgba(255, 255, 255, 0.1);
-  --border: rgba(255, 255, 255, 0.12);
-  --text: #f5f5f4;
-  --muted: #96959c;
-  /* Final accent: dark burgundy → deep near-black wine, as a gradient. */
-  --accent: #9c2545;
-  --accent-2: #4a0f24;
-  --accent-contrast: #fdf3f5;
-  --glow: rgba(156, 37, 69, 0.32);
-  --accent-gradient: linear-gradient(135deg, #b8305a 0%, #7a1f3d 55%, #3a0c1c 100%);
+  --bg: #08090B;
+  --bg-soft: #111316;
+  --surface: rgba(184, 188, 196, 0.05);
+  --surface-strong: rgba(184, 188, 196, 0.1);
+  --border: #3A3D43;
+  --text: #F2F3F5;
+  --muted: #9A9FA8;
+  /* Final accent: Burgundy / Silver palette. */
+  --accent: #8B1735;
+  --accent-2: #5C1026;
+  --accent-contrast: #F2F3F5;
+  --silver: #B8BCC4;
+  --glow: rgba(139, 23, 53, 0.35);
+  --accent-gradient: linear-gradient(135deg, #8B1735 0%, #5C1026 100%);
 }
 
 .theme-light {
@@ -25,11 +26,11 @@
   --border: rgba(43, 32, 20, 0.14);
   --text: #241c14;
   --muted: #6b5f4f;
-  --accent: #7a1f3d;
-  --accent-2: #4a0f24;
+  --accent: #b3711f;
+  --accent-2: #7a4c14;
   --accent-contrast: #ffffff;
-  --glow: rgba(122, 31, 61, 0.18);
-  --accent-gradient: linear-gradient(135deg, #a8304f 0%, #7a1f3d 55%, #4a0f24 100%);
+  --glow: rgba(179, 113, 31, 0.2);
+  --accent-gradient: linear-gradient(135deg, #d99a3f 0%, #b3711f 55%, #7a4c14 100%);
 }
 
 * { box-sizing: border-box; }
@@ -142,8 +143,10 @@ body { margin: 0; overflow-x: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--surface-strong);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.25);
@@ -237,7 +240,7 @@ body { margin: 0; overflow-x: hidden; }
 .intro-photo.grow img,
 .intro-photo.grow .ph-icon { opacity: 0; }
 .intro-core.grow .intro-sig { opacity: 0; transition: opacity 0.2s ease; }
-.intro-sig { font-size: 36px; opacity: 0; }
+.intro-sig { font-size: clamp(22px, 7vw, 36px); opacity: 0; white-space: nowrap; }
 .intro-sig span {
   display: inline-block;
   opacity: 0;
@@ -415,10 +418,19 @@ body { margin: 0; overflow-x: hidden; }
   border: 1px solid transparent;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 }
-.btn-primary { background: var(--accent-gradient); color: var(--accent-contrast); }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px var(--glow); }
-.btn-outline { background: transparent; color: var(--text); border-color: var(--border); }
-.btn-outline:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+.btn-primary {
+  background: var(--accent-gradient);
+  color: var(--accent-contrast);
+  box-shadow: 0 8px 20px var(--glow), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 34px var(--glow), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+.btn-outline {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn-outline:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); box-shadow: 0 10px 24px var(--glow); }
 
 .hero-visual {
   position: relative;
@@ -546,7 +558,9 @@ body { margin: 0; overflow-x: hidden; }
   gap: 70px;
   padding: 140px 8%;
   border-top: 1px solid var(--border);
+  min-width: 0;
 }
+.about > * { min-width: 0; }
 
 .about-visual {
   display: flex;
@@ -865,6 +879,10 @@ body { margin: 0; overflow-x: hidden; }
 @media (max-width: 700px) {
   .work-card { width: 74vw; }
   .works-stage { height: 340px; }
+
+  /* Keep "Get In Touch" and "Download CV" on one row instead of stacking. */
+  .hero-actions { flex-wrap: nowrap; gap: 10px; }
+  .hero-actions .btn { padding: 12px 16px; font-size: 13px; white-space: nowrap; }
 }
 
 /* ==========================================================================
@@ -909,7 +927,7 @@ body { margin: 0; overflow-x: hidden; }
 }
 .pd-hero-scrim {
   position: absolute; inset: 0;
-  background: linear-gradient(0deg, var(--bg) 4%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.15) 65%, rgba(0,0,0,0.4) 100%);
+  background: linear-gradient(0deg, var(--bg) 0%, rgba(0,0,0,0.78) 32%, rgba(0,0,0,0.45) 58%, rgba(0,0,0,0.35) 100%);
 }
 
 .pd-back {
@@ -986,10 +1004,11 @@ body { margin: 0; overflow-x: hidden; }
   font-weight: 700;
   padding: 7px 14px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(10,10,12,0.65);
   color: #fff;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .pd-badge--tag { border-color: var(--project-tint, var(--accent)); color: var(--project-tint, var(--accent)); }
 .pd-pills { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
@@ -998,9 +1017,11 @@ body { margin: 0; overflow-x: hidden; }
   font-weight: 500;
   padding: 6px 13px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(255,255,255,0.06);
-  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(10,10,12,0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255,255,255,0.95);
 }
 .pd-meta-line {
   display: inline-block;
@@ -1074,8 +1095,40 @@ body { margin: 0; overflow-x: hidden; }
 @media (max-width: 900px) {
   .pd-body { grid-template-columns: 1fr; gap: 40px; }
   .pd-side { position: static; }
-  .pd-hero { height: 76vh; }
   .pd-gallery { column-count: 1; }
+
+  /* Image on top as its own block (not a full-bleed background with text
+     overlaid on it), text content flows normally below — nothing hides
+     behind the photo anymore. */
+  .pd-hero {
+    display: block;
+    height: auto;
+    min-height: 0;
+    align-items: stretch;
+  }
+  .pd-hero-bg { position: relative; inset: auto; height: 42vh; min-height: 240px; }
+  .pd-hero-bg img { object-fit: cover; }
+  .pd-hero-scrim { display: none; }
+
+  /* Arrows centered on the image itself (42vh tall), not the whole section. */
+  .pd-hero-nav { top: 21vh; transform: translateY(-50%); }
+
+  .pd-hero-content { position: relative; padding: 24px 6% 8px; }
+  .pd-hero-title {
+    display: block;
+    background: none;
+    backdrop-filter: none;
+    color: var(--text);
+    padding: 0;
+  }
+  .pd-badge, .pd-pill {
+    background: var(--surface);
+    border-color: var(--border);
+    backdrop-filter: none;
+    color: var(--text);
+  }
+  .pd-badge--tag { background: var(--surface); }
+  .pd-meta-line { background: var(--surface); color: var(--muted); }
 }
 
 /* ==========================================================================
@@ -1177,7 +1230,9 @@ body { margin: 0; overflow-x: hidden; }
   align-items: start;
   max-width: 1080px;
   margin: 0 auto;
+  min-width: 0;
 }
+.contact-intro, .contact-card { min-width: 0; }
 .contact-title { font-size: clamp(32px, 4.4vw, 48px); color: var(--text); margin: 12px 0 20px; line-height: 1.15; }
 .contact-title em { color: var(--accent); font-style: normal; }
 .contact-text { color: var(--muted); font-size: 16px; line-height: 1.75; margin-bottom: 34px; max-width: 440px; }
@@ -1194,7 +1249,7 @@ body { margin: 0; overflow-x: hidden; }
 }
 .contact-row { display: flex; align-items: flex-start; gap: 14px; }
 .contact-row-icon { color: var(--accent); flex-shrink: 0; margin-top: 3px; }
-.contact-row-value { color: var(--text); font-size: 15px; font-weight: 600; margin: 4px 0 0; }
+.contact-row-value { color: var(--text); font-size: 15px; font-weight: 600; margin: 4px 0 0; overflow-wrap: anywhere; }
 .contact-row-link { text-decoration: none; display: inline-block; }
 .contact-row-link:hover { color: var(--accent); }
 
@@ -1211,6 +1266,8 @@ body { margin: 0; overflow-x: hidden; }
 
 @media (max-width: 800px) {
   .contact-layout { grid-template-columns: 1fr; }
+  .contact-intro { text-align: center; }
+  .contact-intro .btn-primary { margin: 0 auto; }
 }
 
 .site-footer {
@@ -1255,12 +1312,21 @@ body { margin: 0; overflow-x: hidden; }
 
   .contact-card { padding: 24px 20px; }
   .contact-cta { width: 100%; justify-content: center; }
+  .contact { padding-top: 118px; padding-bottom: 30px; }
+  .site-footer { margin-top: 36px; }
 }
 
 @media (max-width: 420px) {
   .intro-photo { width: 130px; height: 130px; }
-  .intro-sig { font-size: 28px; }
+  .hero-actions .btn { padding: 10px 13px; font-size: 12px; gap: 6px; }
   .group-stop-title { font-size: 24px; }
   .pd-hero-title { font-size: 34px; }
   .project-editorial, .project-page-inner { padding-left: 5%; padding-right: 5%; }
+}
+
+@media (max-width: 680px) {
+  /* The social rail is purely a convenience shortcut — the same links are
+     already in the Contact section, so on narrow phones we free up the
+     screen edge instead of cramping content next to it. */
+  .social-rail { display: none; }
 }
