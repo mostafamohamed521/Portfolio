@@ -7,7 +7,7 @@ import { Workflow, Linkedin, ShieldCheck, KeyRound, Lock } from "lucide-react";
  */
 export const SKILLS = [
   // Backend
-  { id: "django", label: "Django", slug: "django", color: "092E20", category: "Backend" },
+  { id: "django", label: "Django", slug: "django", color: "1FA36B", category: "Backend" },
   { id: "drf", label: "Django REST Framework", Icon: Workflow, color: "38BDF8", category: "Backend" },
   { id: "dotnet", label: ".NET", slug: "dotnet", color: "512BD4", category: "Backend" },
   { id: "csharp", label: "C#", slug: "csharp", color: "239120", category: "Backend" },
@@ -29,7 +29,7 @@ export const SKILLS = [
   // Databases
   { id: "postgresql", label: "PostgreSQL", slug: "postgresql", color: "4169E1", category: "Database" },
   { id: "mysql", label: "MySQL", slug: "mysql", color: "4479A1", category: "Database" },
-  { id: "sqlite", label: "SQLite", slug: "sqlite", color: "003B57", category: "Database" },
+  { id: "sqlite", label: "SQLite", slug: "sqlite", color: "3D9CD3", category: "Database" },
 
   // DevOps & Cloud
   { id: "docker", label: "Docker", slug: "docker", color: "2496ED", category: "Tools" },
