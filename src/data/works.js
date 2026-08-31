@@ -6,7 +6,23 @@ export const WORKS = [
     role: "Full-Stack Developer (Solo)",
     tag: "Food & Restaurant Platform",
     color: "2E7D32",
-    images: [],
+    images: [
+      "/works/sarab/cover.jpg",
+      "/works/sarab/home.jpeg",
+      "/works/sarab/about-us.jpeg",
+      "/works/sarab/menu.jpeg",
+      "/works/sarab/blog.jpeg",
+      "/works/sarab/cart.jpeg",
+      "/works/sarab/checkout.jpeg",
+      "/works/sarab/contact-us.jpeg",
+      "/works/sarab/faq.jpeg",
+      "/works/sarab/login.jpeg",
+      "/works/sarab/register.jpeg",
+      "/works/sarab/profile.jpeg",
+      "/works/sarab/reservation.jpeg",
+      "/works/sarab/track-your-order.jpeg",
+      "/works/sarab/wishlist.jpeg",
+    ],
     liveUrl: "https://sarabfood.pythonanywhere.com/",
     repoUrl: "https://github.com/mostafamohamed521/Sarab.git",
     summary: "A complete Django e-commerce and restaurant management platform - ordering, reservations, and a role-restricted admin dashboard, built solo.",
@@ -131,7 +147,49 @@ export const WORKS = [
     role: "Full-Stack Developer (Solo)",
     tag: "Gym Management Ecosystem",
     color: "1F8A70",
-    images: [],
+    images: [
+  "/works/gymx/cover.png",
+
+  "/works/gymx/home.jpeg",
+  "/works/gymx/about-us.jpeg",
+  "/works/gymx/classes.jpeg",
+  "/works/gymx/blog.jpeg",
+  "/works/gymx/locations.jpeg",
+  "/works/gymx/offers.jpeg",
+  "/works/gymx/equipment.jpeg",
+  "/works/gymx/contact-us.jpeg",
+  "/works/gymx/quote.jpeg",
+  "/works/gymx/login.jpeg",
+
+  "/works/gymx/register.jpeg",
+  "/works/gymx/forget-password.jpeg",
+  "/works/gymx/dashboard.jpeg",
+  "/works/gymx/members.jpeg",
+  "/works/gymx/memberships.jpeg",
+  "/works/gymx/coaches.jpeg",
+  "/works/gymx/attendence.jpeg",
+  "/works/gymx/classes (2).jpeg",
+  "/works/gymx/workout.jpeg",
+  "/works/gymx/nutrition.jpeg",
+
+  "/works/gymx/crm.jpeg",
+  "/works/gymx/hr-employees.jpeg",
+  "/works/gymx/branches.jpeg",
+  "/works/gymx/payments.jpeg",
+  "/works/gymx/finance.jpeg",
+  "/works/gymx/inventory.jpeg",
+  "/works/gymx/pos.jpeg",
+  "/works/gymx/reports.jpeg",
+  "/works/gymx/ai-features.jpeg",
+  "/works/gymx/notifications.jpeg",
+
+  "/works/gymx/settings.jpeg",
+  "/works/gymx/help-center.jpeg",
+  "/works/gymx/profile.jpeg",
+  "/works/gymx/activity-log.jpeg",
+  "/works/gymx/member-dashboard.jpeg",
+  "/works/gymx/my-portal-member.jpeg",
+],
     liveUrl: "",
     repoUrl: "https://github.com/mostafamohamed521/GYMX.git",
     summary: "A full digital operating system for a fitness business - 22 apps, 5 roles, and an AI insights layer, built sprint by sprint.",
@@ -163,8 +221,32 @@ export const WORKS = [
     role: "Full-Stack Developer (Solo)",
     tag: "E-commerce Storefront",
     color: "2F6FED",
-    images: [],
-    liveUrl: "",
+images: [
+  "/works/eflyer/cover.png",
+
+  "/works/eflyer/main1.jpeg",
+  "/works/eflyer/main2.jpeg",
+  "/works/eflyer/main3.jpeg",
+
+  "/works/eflyer/shop-clothes.jpeg",
+  "/works/eflyer/shop-electronics.jpeg",
+  "/works/eflyer/shop-jewellery.jpeg",
+
+  "/works/eflyer/fashion.jpeg",
+  "/works/eflyer/electronics.jpeg",
+  "/works/eflyer/Jewellery.jpeg",
+
+  "/works/eflyer/aboutus.jpeg",
+  "/works/eflyer/career.jpeg",
+  "/works/eflyer/cart.jpeg",
+  "/works/eflyer/checkout.jpeg",
+  "/works/eflyer/compare-product.jpeg",
+  "/works/eflyer/contactus.jpeg",
+  "/works/eflyer/dashboard.jpeg",
+  "/works/eflyer/login.jpeg",
+  "/works/eflyer/register.jpeg"
+],
+    liveUrl: "https://eflyer.pythonanywhere.com/",
     repoUrl: "https://github.com/mostafamohamed521/Eflyer.git",
     summary: "A full e-commerce storefront (35 pages) backed by a complete JSON REST API, with a documented security-hardening and bug-fixing pass.",
     overview:
@@ -196,8 +278,31 @@ export const WORKS = [
     role: "Full-Stack Developer (Solo)",
     tag: "QR Code Generator",
     color: "E67E22",
-    images: [],
-    liveUrl: "",
+    images: [
+  "/works/qrforge/cover.png",
+
+  // Public Website
+  "/works/qrforge/home.jpeg",
+  "/works/qrforge/about.jpeg",
+  "/works/qrforge/upgrade.jpeg",
+  "/works/qrforge/faq.jpeg",
+  "/works/qrforge/contact.jpeg",
+  "/works/qrforge/arabic.jpeg",
+  "/works/qrforge/dark-mode.jpeg",
+
+  // Authentication
+  "/works/qrforge/login.jpeg",
+  "/works/qrforge/register.jpeg",
+
+  // Application
+  "/works/qrforge/generator.jpeg",
+  "/works/qrforge/analytics.jpeg",
+  "/works/qrforge/dynamic-qr.jpeg",
+  "/works/qrforge/bulk.jpeg",
+  "/works/qrforge/scanner-qr.jpeg",
+  "/works/qrforge/profile.jpeg",
+],
+    liveUrl: "https://qrforger.pythonanywhere.com/",
     repoUrl: "https://github.com/mostafamohamed521/qr_generator.git",
     summary: "A professional QR code generator supporting 8 QR types, custom styling, and a saved history - Django backend, vanilla JS frontend.",
     overview:
@@ -218,39 +323,6 @@ export const WORKS = [
       { value: "8", label: "QR types supported" },
       { value: "44", label: "Automated tests" },
       { value: "40", label: "Item history" },
-    ],
-  },
-  {
-    id: "arven",
-    name: "Arven",
-    category: "Full-Stack",
-    role: "Full-Stack Developer (Solo, in progress)",
-    tag: "Bilingual Learning Platform",
-    color: "B5468C",
-    images: [],
-    liveUrl: "",
-    repoUrl: "",
-    summary: "A bilingual (Arabic/English) educational platform with courses, learning paths, and an Egyptian Baccalaureate track - currently in active development.",
-    overview:
-      "Arven is a course and learning-path platform built as a Django REST API paired with a " +
-      "React SPA, designed bilingually from the ground up (Arabic/English, with live RTL/LTR " +
-      "switching). Phase 1 - foundation, authentication, and course discovery - is complete; " +
-      "the project is still being actively built.",
-    problem:
-      "A bilingual learning platform needs its design system, not just its text, to genuinely " +
-      "support right-to-left layouts - and needs a course lifecycle (draft -> review -> approved " +
-      "-> published) that keeps unpublished content invisible to the public.",
-    highlights: [
-      "Custom 5-role user model (Student, Instructor, Admin, Super Admin, Support Agent) with JWT auth",
-      "A full course workflow (Draft -> Submitted -> Review -> Approved -> Published) with a public discovery API that never leaks unpublished content",
-      "React 19 + TypeScript frontend on Vite with a custom design system in Tailwind v4, fully bilingual with live RTL/LTR switching",
-      "Currently building out the learning domain: lesson progress tracking, quizzes, and assignments",
-    ],
-    stack: ["Django REST Framework", "React", "TypeScript"],
-    stats: [
-      { value: "5", label: "User roles" },
-      { value: "2", label: "Languages (AR/EN)" },
-      { value: "Phase 1", label: "Current status" },
     ],
   },
 ];
